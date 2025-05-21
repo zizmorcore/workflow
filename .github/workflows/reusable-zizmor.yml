@@ -37,6 +37,8 @@ jobs:
 
     - name: Analyze GitHub Actions and workflow definitions with zizmor 🌈
       run: uvx zizmor --format=sarif . > results.sarif
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload SARIF report into the GitHub repo code scanning
       uses: github/codeql-action/upload-sarif@v3
